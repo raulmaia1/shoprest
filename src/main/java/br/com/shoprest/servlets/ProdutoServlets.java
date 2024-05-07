@@ -3,7 +3,6 @@ package br.com.shoprest.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,9 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import br.com.shoprest.bean.ProdutoBean;
 
@@ -35,8 +33,8 @@ public class ProdutoServlets extends HttpServlet {
 		resp.setStatus(200);
 
 		PrintWriter printWriter = resp.getWriter();
-		
-		printWriter.print(new Gson().toJson(p));
+//		
+//		printWriter.print(new Gson().toJson(p));
 		
 		printWriter.flush();
 	}
@@ -78,24 +76,23 @@ public class ProdutoServlets extends HttpServlet {
 //				} catch (IOException e) {
 //					e.printStackTrace();
 //				}
-				
-				 Gson gson = new Gson();
+					
+				 JSONObject jsonbject = new JSONObject(string);
 				 
-				 JsonObject fromJson = gson.getfromJson(string, JsonObject.class);
-				 if (fromJson.isJsonNull()){
-					 System.out.println(fromJson.get("descricao"));
-				 }
+				 System.out.println(string);
 				 
 				
-				
-				System.out.println(string);
-				if(arg.getDescricaoProduto().contains(string)) {
-					try {
-						resp.getWriter().print(new Gson().toJson(arg));
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
+				 
+//				
+//				
+//				System.out.println(string);
+//				if(arg.getDescricaoProduto().contains(string)) {
+//					try {
+//						resp.getWriter().print(new Gson().toJson(arg));
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//				}
 			});
 		});			
 				
